@@ -1,0 +1,22 @@
+.navbar {
+  position: sticky;
+  border-bottom: 1px solid var(--font-color-light-900);
+  &-container {
+    background-color: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &__logo {
+      color: var(--font-color-light-900);
+      margin: 1rem;
+    }
+    &__list {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      text-transform: uppercase;
+      gap: 2rem;
+      margin: 1rem 2rem 1rem 1rem; // top right bottom left
+    }
+  }
+}
