@@ -4,9 +4,9 @@ import "swiper/css";
 import { Navigation, EffectFade } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
-import "./Swipe.scss";
+import "../../styles/components/Swipe.scss";
 import Slider from "./Slider.js";
-import ImageMandalorian from "../../assets/food/burger.jpeg";
+import SushiBanner from "../../assets/food/sushi-banner.png";
 import ImageJamesBond from "../../assets/food/pasta.jpeg";
 import HarryPotter from "../../assets/food/pizza.jpeg";
 import Burger2 from "../../assets/food/burger2.jpeg";
@@ -18,13 +18,13 @@ const Swipe = () => {
         modules={[Navigation, EffectFade]}
         navigation
         speed={600}
-        slidesPerView={2}
+        slidesPerView={3}
         loop
         className={"swiper-container"}
       >
         <SwiperSlide className="slider-container">
           <Slider
-            image={ImageMandalorian}
+            image={SushiBanner}
             title={"Mandalorian"}
             text={"Premium playing cards. This is the Way."}
           />

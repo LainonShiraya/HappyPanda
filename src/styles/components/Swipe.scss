@@ -1,17 +1,22 @@
-.swiper {
-  overflow: hidden;
+.swiper-container {
 }
 
 .slider-container {
-  margin: auto;
+  margin-left: 2rem;
+  margin-right: 2rem;
   position: relative;
   overflow: hidden;
+  text-align: center;
+  transition: all 0.4s;
+  &:hover {
+    filter: brightness(40%);
+  }
   img {
-    height: 80vh;
-    min-height: 600px;
-    filter: brightness(80%);
+    height: 30vh;
+    min-height: 300px;
     width: 100%;
     object-fit: fill;
+    border-radius: 1rem;
   }
   &__panel {
     position: absolute;
@@ -33,32 +38,25 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: white !important;
-  border: 2px solid white !important;
-  padding: 0.8rem;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
+  color: black !important;
   transition-duration: 0.2s;
+  padding: 1rem;
+  font-size: 1.4rem;
+  border-radius: 50%;
   &:hover {
-    background-color: white;
+    background-color: var(--font-color-light-700);
     transition: all 0.4s;
   }
 }
 
-.swiper-button-prev {
-  margin-left: 2%;
-}
-.swiper-button-next {
-  margin-right: 2%;
-}
 .swiper-button-next::after,
 .swiper-button-prev::after {
+  font-size: 2rem;
   transition-duration: 0.2s;
-  font-size: 1.8rem !important;
+  font-weight: 700;
 }
 .swiper-button-next:hover::after,
 .swiper-button-prev:hover::after {
-  color: black;
+  color: white !important;
   transition: all 0.4s;
 }

@@ -1,8 +1,10 @@
 .navbar {
   position: sticky;
+  top: 0;
   z-index: 300;
   width: 100%;
   border-bottom: 1px solid var(--font-color-light-900);
+  background-color: var(--background-color-dark);
   &-container {
     width: 80%;
     margin: auto;
@@ -11,7 +13,6 @@
     flex-direction: row;
     justify-content: space-between;
     &__logo {
-      //  color: var(--font-color-light-900);
       position: relative;
       width: 8rem;
       height: 4rem;
