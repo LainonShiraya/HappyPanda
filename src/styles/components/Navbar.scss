@@ -1,22 +1,44 @@
 .navbar {
   position: sticky;
+  z-index: 300;
+  width: 100%;
   border-bottom: 1px solid var(--font-color-light-900);
   &-container {
+    width: 80%;
+    margin: auto;
     background-color: inherit;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     &__logo {
-      color: var(--font-color-light-900);
-      margin: 1rem;
+      //  color: var(--font-color-light-900);
+      position: relative;
+      width: 8rem;
+      height: 4rem;
+      overflow: hidden;
+      margin-top: 0.125rem;
+      margin-bottom: 0;
+      img {
+        position: absolute;
+        overflow: hidden;
+        height: 128px;
+        width: 128px;
+      }
     }
     &__list {
       display: flex;
       flex-direction: row;
       list-style: none;
       text-transform: uppercase;
+      text-align: center;
       gap: 2rem;
-      margin: 1rem 2rem 1rem 1rem; // top right bottom left
+      margin: auto 2rem auto 1rem; // top right bottom left
+      li {
+        margin: auto;
+      }
+      i {
+        font-size: 1.4rem;
+      }
     }
   }
 }

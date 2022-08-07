@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+/src/assets/*.psd
+
+/src/assets/food
+
 # testing
 /coverage
 
