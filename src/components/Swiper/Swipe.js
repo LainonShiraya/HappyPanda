@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, EffectFade } from "swiper";
@@ -6,61 +6,52 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "../../styles/components/Swipe.scss";
 import Slider from "./Slider.js";
-import SushiBanner from "../../assets/food/sushi-banner.png";
-import ImageJamesBond from "../../assets/food/pasta.jpeg";
-import HarryPotter from "../../assets/food/pizza.jpeg";
-import Burger2 from "../../assets/food/burger2.jpeg";
-
-const Swipe = () => {
+const Swipe = ({ promotionsData }) => {
+  const swiperNavPrevRef = useRef(null);
+  const swiperNavNextRef = useRef(null);
+  console.log(promotionsData);
   return (
     <div className="swiper">
       <Swiper
         modules={[Navigation, EffectFade]}
-        navigation
+        navigation={{
+          prevEl: swiperNavPrevRef.current,
+          nextEl: swiperNavNextRef.current,
+        }}
         speed={600}
-        slidesPerView={3}
+        spaceBetween={60}
+        slidesPerView={2}
         loop
         className={"swiper-container"}
+        onInit={swiper => {
+          swiper.params.navigation.prevEl = swiperNavPrevRef.current;
+          swiper.params.navigation.nextEl = swiperNavNextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }}
       >
-        <SwiperSlide className="slider-container">
-          <Slider
-            image={SushiBanner}
-            title={"Mandalorian"}
-            text={"Premium playing cards. This is the Way."}
-          />
-        </SwiperSlide>
-        <SwiperSlide className="slider-container">
-          <Slider
-            image={ImageJamesBond}
-            title={"James Bond"}
-            text={
-              "Premium playing cards inspired by the legendary film series."
-            }
-          />
-        </SwiperSlide>
-        <SwiperSlide className="slider-container">
-          <Slider
-            image={HarryPotter}
-            title={"Harry Potter"}
-            text={
-              "Wands Ready! Premium playing cards by theory11, inspider by the Wizarding World. "
-            }
-          />
-        </SwiperSlide>
-        <SwiperSlide className="slider-container">
-          <Slider
-            image={Burger2}
-            title={"Harry Potter"}
-            text={
-              "Wands Ready! Premium playing cards by theory11, inspider by the Wizarding World. "
-            }
-          />
-        </SwiperSlide>
+        {promotionsData.map((promotion, key) => {
+          return (
+            <SwiperSlide className="slider-container">
+              <Slider
+                image={`../../assets/food/${promotion.promotion_image}`}
+                title={promotion.promotion_name}
+                text={promotion.promotion_description}
+              />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
+      <button className="swiper__button-prev" ref={swiperNavPrevRef}>
+        {" "}
+        &#x2039;
+      </button>
+      <button className="swiper__button-next" ref={swiperNavNextRef}>
+        {" "}
+        &#x203a;
+      </button>
     </div>
   );
 };
-
 export default Swipe;
-
 //  Pexels images

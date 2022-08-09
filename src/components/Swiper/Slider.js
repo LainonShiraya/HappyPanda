@@ -1,13 +1,13 @@
 import React from "react";
-import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "../../styles/components/Swipe.scss";
+import Image from "../../assets/food/sushi-banner.png";
 const Slider = ({ image, title, text }) => {
   return (
     <div className="slider-slider-container">
-      <img src={image} alt=" " />
+      <img src={Image} alt="testing" />
       <div className="slider-container__panel">
         <h1>{title}</h1>
         <p>{text}</p>
