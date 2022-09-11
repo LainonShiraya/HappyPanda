@@ -21,7 +21,7 @@ const Swipe = ({ promotionsData }) => {
         speed={600}
         spaceBetween={60}
         slidesPerView={2}
-        loop
+        loop={true}
         className={"swiper-container"}
         onInit={swiper => {
           swiper.params.navigation.prevEl = swiperNavPrevRef.current;
@@ -34,7 +34,7 @@ const Swipe = ({ promotionsData }) => {
           return (
             <SwiperSlide className="slider-container">
               <Slider
-                image={`../../assets/food/${promotion.promotion_image}`}
+                image={promotion.promotion_image}
                 title={promotion.promotion_name}
                 text={promotion.promotion_description}
               />

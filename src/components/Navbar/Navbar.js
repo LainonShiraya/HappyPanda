@@ -1,6 +1,6 @@
 import { React } from "react";
 import "../../styles/components/Navbar.scss";
-import Logo from "../../assets/panda_icon.png";
+import Logo from "../../assets/panda_iconv2.png";
 const Navbar = () => {
   return (
     <div className="navbar">

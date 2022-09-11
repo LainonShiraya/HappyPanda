@@ -37,9 +37,13 @@
   position: relative;
   overflow: hidden;
   text-align: center;
-  transition: all 0.4s;
   &:hover {
-    filter: brightness(40%);
+    img {
+      filter: brightness(40%);
+    }
+    .slider-container__panel {
+      visibility: visible;
+    }
   }
   img {
     height: 30vh;
@@ -47,10 +51,14 @@
     width: 100%;
     object-fit: fill;
     border-radius: 1rem;
+    transition: all 0.4s;
   }
   &__panel {
+    transition: all 0.2s;
+    visibility: hidden;
+    z-index: 2;
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: calc(50% - 12em);
     text-align: center;
     width: 24em;
@@ -58,6 +66,7 @@
     h1 {
       text-transform: uppercase;
       font-weight: 600;
+      mix-blend-mode: difference;
     }
     p {
       font-weight: 400;

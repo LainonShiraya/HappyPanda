@@ -3,8 +3,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "../../styles/components/Swipe.scss";
-import Image from "../../assets/food/sushi-banner.png";
+//import Image from "../../assets/food/sushi-banner.png";
 const Slider = ({ image, title, text }) => {
+  const Image = require(`../../assets/food/${image}`);
+  console.log(Image);
   return (
     <div className="slider-slider-container">
       <img src={Image} alt="testing" />
