@@ -1,0 +1,37 @@
+.footer-container {
+  width: 60%;
+  margin: auto;
+  margin-top: 2rem;
+  text-align: center;
+  &-pages {
+    margin: auto;
+    span:not(:last-child) {
+      border-right: 4px solid white;
+      padding-right: 1rem;
+    }
+    span {
+      transition: all 0.4s ease-in-out;
+      padding-left: 1rem;
+      &:hover {
+        cursor: pointer;
+        color: var(--font-color-light-500);
+      }
+    }
+  }
+  &-medias {
+    p {
+      margin: 2rem;
+    }
+    i {
+      margin: 0.5rem;
+      color: white;
+    }
+    p:last-of-type {
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      &:hover {
+        color: var(--font-color-light-500);
+      }
+    }
+  }
+}

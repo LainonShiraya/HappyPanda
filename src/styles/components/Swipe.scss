@@ -1,0 +1,103 @@
+.swiper {
+  &-container {
+    width: 80%;
+  }
+  &__button {
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    z-index: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: inherit;
+    color: var(--font-color-light-700);
+    border-radius: 50%;
+    border: none;
+    font-size: 6rem;
+    font-weight: 700;
+    padding: 1rem;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: var(--font-color-light-900);
+      font-size: 8rem;
+    }
+    &-prev {
+      @extend .swiper__button;
+      left: 0;
+    }
+    &-next {
+      @extend .swiper__button;
+      right: 0;
+    }
+  }
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  cursor: grab;
+
+  &:hover {
+    img {
+      filter: brightness(40%);
+    }
+    .slider-container__panel {
+      visibility: visible;
+    }
+  }
+  img {
+    height: 30vh;
+    min-height: 300px;
+    width: 100%;
+    object-fit: fill;
+    border-radius: 1rem;
+    transition: all 0.4s;
+  }
+  &__panel {
+    transition: all 0.2s;
+    visibility: hidden;
+    z-index: 2;
+    position: absolute;
+    top: 30%;
+    left: calc(50% - 12em);
+    text-align: center;
+    width: 24em;
+    margin: auto;
+    h1 {
+      text-transform: uppercase;
+      font-weight: 600;
+      mix-blend-mode: difference;
+    }
+    p {
+      font-weight: 400;
+      font-style: italic;
+    }
+  }
+}
+
+// .swiper-button-next,
+// .swiper-button-prev {
+//   color: black !important;
+//   transition-duration: 0.2s;
+//   padding: 1rem;
+//   font-size: 1.4rem;
+//   border-radius: 50%;
+//   &:hover {
+//     background-color: var(--font-color-light-700);
+//     transition: all 0.4s;
+//   }
+// }
+
+// .swiper-button-next::after,
+// .swiper-button-prev::after {
+//   // font-size: 2rem;
+//   // transition-duration: 0.2s;
+//   // font-weight: 700;
+//   display: none;
+// }
+// .swiper-button-next:hover::after,
+// .swiper-button-prev:hover::after {
+//   color: white !important;
+//   transition: all 0.4s;
+// }
