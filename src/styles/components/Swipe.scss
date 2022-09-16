@@ -1,7 +1,6 @@
 .swiper {
   &-container {
     width: 80%;
-    cursor: grab;
   }
   &__button {
     top: 50%;
@@ -37,6 +36,8 @@
   position: relative;
   overflow: hidden;
   text-align: center;
+  cursor: grab;
+
   &:hover {
     img {
       filter: brightness(40%);
