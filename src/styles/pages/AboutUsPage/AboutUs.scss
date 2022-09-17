@@ -1,0 +1,27 @@
+.about-us-container {
+  width: 40%;
+  margin: auto;
+  margin-top: 12rem;
+  background-color: white;
+  border-radius: 15px;
+  height: 40vh;
+  max-height: 600px;
+  min-height: 600px;
+  .panda-on-text-container img {
+    top: -138px;
+  }
+  &-text {
+    text-align: center;
+    padding: 0 4rem 2rem 4rem;
+    color: black;
+    span {
+      font-size: 1.2rem;
+      font-weight: 300;
+      line-height: 2rem;
+      letter-spacing: 2px;
+    }
+    p:first-of-type {
+      margin-top: 4rem;
+    }
+  }
+}

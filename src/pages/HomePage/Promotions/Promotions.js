@@ -1,6 +1,6 @@
 import React from "react";
-import "../../../styles/pages/HomePage/PromotionsPage.scss";
-import Promotions from "../../../components/Promotions/Promotions";
+import "../../../styles/pages/HomePage/Promotions.scss";
+import Promotions from "./Promotions/Promotions";
 const PromotionsPage = () => {
   return (
     <div className="promotions-page-container">

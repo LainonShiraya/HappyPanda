@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../styles/pages/HomePage/AboutUsPage.scss";
+import "../../../styles/pages/HomePage/AboutUs.scss";
 import Panda_bamboo from "../../../assets/food/panda_about_us_bamboo_looking_left.png";
 const AboutUsPage = () => {
   return (

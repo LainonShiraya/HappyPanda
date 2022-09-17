@@ -4,7 +4,7 @@ import "swiper/css";
 import { Navigation, EffectFade } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
-import "../../styles/components/Swipe.scss";
+import "../../../../styles/components/Swipe.scss";
 import Slider from "./Slider.js";
 const Swipe = ({ promotionsData }) => {
   const swiperNavPrevRef = useRef(null);

@@ -1,9 +1,8 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import Instagram from "../../components/Instagram/Instagram";
-import FindRestaurantPage from "./FindRestaurantPage/FindRestaurantPage";
-import PromotionsPage from "./PromotionsPage/PromotionsPage";
-import AboutUsPage from "./AboutUsPage/AboutUsPage";
+import FindRestaurantPage from "./FindRestaurant/FindRestaurant";
+import PromotionsPage from "./Promotions/Promotions";
+import AboutUsPage from "./AboutUs/AboutUs";
 import Footer from "../../components/Footer/Footer";
 const HomePage = () => {
   return (
