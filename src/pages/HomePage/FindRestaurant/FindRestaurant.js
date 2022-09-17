@@ -1,6 +1,6 @@
 import React from "react";
-import FindRestaurantMenu from "../../../components/FindRestaurantMenu/FindRestaurantMenu";
-import "../../../styles/pages/HomePage/FindRestaurantPage.scss";
+import FindRestaurantMenu from "./FindRestaurantMenu/FindRestaurantMenu";
+import "../../../styles/pages/HomePage/FindRestaurant.scss";
 const FindRestaurantPage = () => {
   return (
     <div className="find-restaurant-page-container">

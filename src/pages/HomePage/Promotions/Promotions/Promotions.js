@@ -1,11 +1,11 @@
 import React from "react";
-import "../../styles/components/Promotions.scss";
+import "../../../../styles/components/Promotions.scss";
 import Swipe from "../Swiper/Swipe";
-import { promotionsData } from "../../data/PromotionsData";
-import pandaPromotionsIcon from "../../assets/food/panda-promotions-icon.png";
-import pandaPromotionsIconSleep from "../../assets/food/panda-promotions-icon-sleep.png";
+import { promotionsData } from "../../../../data/PromotionsData";
+import pandaPromotionsIcon from "../../../../assets/food/panda-promotions-icon.png";
+import pandaPromotionsIconSleep from "../../../../assets/food/panda-promotions-icon-sleep.png";
 
-import PandaOnText from "../PandaOnText/PandaOnText";
+import PandaOnText from "../../../../components/PandaOnText/PandaOnText";
 const Promotions = () => {
   return (
     <div className="promotions-container">

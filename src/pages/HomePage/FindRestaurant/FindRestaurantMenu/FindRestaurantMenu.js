@@ -1,6 +1,6 @@
 import React from "react";
-import "../../styles/components/FindRestaurantMenu.scss";
-import Logo from "../../assets/panda_iconv2.png";
+import "../../../../styles/components/FindRestaurantMenu.scss";
+import Logo from "../../../../assets/panda_iconv2.png";
 const FindRestaurantMenu = () => {
   return (
     <div className="find-restaurant-menu">

@@ -1,14 +1,25 @@
 import React from "react";
 import "../../styles/components/Footer.scss";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer-container">
       <div className="footer-container-pages">
-        <span> About us</span>
-        <span> Restaurants </span>
-        <span> Privacy Policy</span>
-        <span> Career</span>
-        <span> Common questions</span>
+        <span>
+          <Link to="about-us">About us</Link>
+        </span>
+        <span>
+          <Link to="about-us"> Restaurants </Link>
+        </span>
+        <span>
+          <Link to="about-us"> Privacy Policy</Link>
+        </span>
+        <span>
+          <Link to="about-us"> Career</Link>
+        </span>
+        <span>
+          <Link to="about-us">Common questions</Link>
+        </span>
       </div>
       <div className="footer-container-medias">
         <p>Follow us on </p>

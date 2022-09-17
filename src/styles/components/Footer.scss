@@ -6,15 +6,19 @@
   &-pages {
     margin: auto;
     span:not(:last-child) {
-      border-right: 4px solid white;
-      padding-right: 1rem;
+      a {
+        border-right: 4px solid white;
+        padding-right: 1rem;
+      }
     }
     span {
-      transition: all 0.4s ease-in-out;
-      padding-left: 1rem;
-      &:hover {
-        cursor: pointer;
-        color: var(--font-color-light-500);
+      a {
+        transition: all 0.4s ease-in-out;
+        padding-left: 1rem;
+        &:hover {
+          cursor: pointer;
+          color: var(--font-color-light-500);
+        }
       }
     }
   }

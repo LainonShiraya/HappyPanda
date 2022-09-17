@@ -15,7 +15,9 @@ a:visited,
 a:active {
   text-decoration: none;
 }
-
+a {
+  color: white;
+}
 .link {
   transition: all 0.2s ease-in-out;
   &:hover,
