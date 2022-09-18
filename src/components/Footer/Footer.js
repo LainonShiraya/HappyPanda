@@ -6,19 +6,19 @@ const Footer = () => {
     <div className="footer-container">
       <div className="footer-container-pages">
         <span>
-          <Link to="about-us">About us</Link>
+          <Link to="../about-us">About us</Link>
         </span>
         <span>
-          <Link to="about-us"> Restaurants </Link>
+          <Link to="../restaurants"> Restaurants </Link>
         </span>
         <span>
-          <Link to="about-us"> Privacy Policy</Link>
+          <Link to="../about-us"> Privacy Policy</Link>
         </span>
         <span>
-          <Link to="about-us"> Career</Link>
+          <Link to="../about-us"> Career</Link>
         </span>
         <span>
-          <Link to="about-us">Common questions</Link>
+          <Link to="../about-us">Common questions</Link>
         </span>
       </div>
       <div className="footer-container-medias">
