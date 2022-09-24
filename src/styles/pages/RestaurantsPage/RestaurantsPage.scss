@@ -2,7 +2,8 @@
   height: 90vh;
   max-height: 900px;
   min-height: 800px;
-  background-image: url("../../../assets/food/test-background.png");
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
+    url("../../../assets/food/test-background.png");
 }

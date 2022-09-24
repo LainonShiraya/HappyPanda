@@ -84,3 +84,20 @@ textarea::placeholder {
     margin-top: revert;
   }
 }
+
+input:focus:invalid {
+  border: 2px solid red;
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
