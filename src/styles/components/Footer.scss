@@ -1,15 +1,24 @@
+@use '../util';
 .footer-container {
-  width: 60%;
+  width: 80%;
   margin: auto;
   margin-top: 2rem;
   text-align: center;
   &-pages {
     margin: auto;
-    span:not(:last-child) {
-      a {
-        border-right: 4px solid white;
-        padding-right: 1rem;
-      }
+	@include util.breakpoint-up('medium'){
+		span:not(:last-child) {
+			a {
+			  border-right: 4px solid white;
+			  padding-right: 1rem;
+			}
+	}
+}
+	  @include util.breakpoint-down('small'){
+		display:flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		gap:1rem;
     }
     span {
       a {

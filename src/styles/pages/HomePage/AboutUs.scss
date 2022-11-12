@@ -1,7 +1,8 @@
+@use '../../util';
 .about-page-container {
   background-color: var(
     --font-color-dark-700
-  ); //maybe light? or gray? dark 700 or 500
+  ); 
   border-top: 0.5rem solid var(--font-color-dark-900);
   position: relative;
   min-height: 300px;
@@ -9,15 +10,31 @@
     position: absolute;
     right: 0px;
     bottom: -10px;
+	@include util.breakpoint-down('small'){
+		display:none;
+	}
+	img{
+		width:100%;
+	}
   }
   &-text {
-    width: 40%;
-    margin: auto;
-    margin-top: 4rem;
+  // width: 40%;
+ 	width: min(50%, 700px);
+    margin: 4rem auto 0rem;
     text-align: center;
+	padding-bottom: 2rem;
+	@include util.breakpoint-down('medium'){
+		margin: 4rem 2rem 0rem;
+		text-align: left;
+		width:60%;
+	}
+	@include util.breakpoint-down('small'){
+		margin: 2rem auto 0rem;
+		text-align: center;
+		width:80%;
+	}
     h1 {
       color: var(--background-color-light);
-      font-size: 4rem;
       font-weight: 700;
       span {
         color: #c0e226;

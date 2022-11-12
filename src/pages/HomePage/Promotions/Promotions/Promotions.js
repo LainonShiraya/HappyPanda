@@ -1,15 +1,19 @@
-import React from "react";
+import React,{ useState, useEffect} from "react";
 import "../../../../styles/components/Promotions.scss";
 import Swipe from "../Swiper/Swipe";
-import { promotionsData } from "../../../../data/PromotionsData";
 import pandaPromotionsIcon from "../../../../assets/food/panda-promotions-icon.png";
 import pandaPromotionsIconSleep from "../../../../assets/food/panda-promotions-icon-sleep.png";
-
 import PandaOnText from "../../../../components/PandaOnText/PandaOnText";
+import {getPromotions} from "../../../../utils/GraphqlApiCalls";
 const Promotions = () => {
+	const [promotions,setPromotions] = useState([]);
+	useEffect(() =>  {
+		getPromotions().then( result => {setPromotions(result)});
+	},[]);
+
   return (
     <div className="promotions-container">
-      {promotionsData.length < 1 && (
+      {promotions.length < 1 && (
         <PandaOnText
           image={pandaPromotionsIconSleep}
           title={"Empty Bank"}
@@ -19,7 +23,7 @@ const Promotions = () => {
         />
       )}
 
-      {promotionsData.length > 0 && (
+      {promotions.length > 0 && (
         <>
           {" "}
           <PandaOnText
@@ -27,7 +31,7 @@ const Promotions = () => {
             title={"Promotions"}
             text={"Most popular among the clients"}
           />{" "}
-          <Swipe promotionsData={promotionsData} />
+          <Swipe promotionsData={promotions} />
         </>
       )}
     </div>

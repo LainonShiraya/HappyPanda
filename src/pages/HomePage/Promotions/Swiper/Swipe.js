@@ -19,8 +19,12 @@ const Swipe = ({ promotionsData }) => {
           nextEl: swiperNavNextRef.current,
         }}
         speed={600}
-        spaceBetween={60}
-        slidesPerView={2}
+		breakpoints={{
+			700: { slidesPerView: 2},
+			1440: {slidesPerView: 3}
+		  }}
+		  spaceBetween={40}
+        slidesPerView={1}
         loop={true}
         className={"swiper-container"}
         onInit={swiper => {
@@ -34,9 +38,9 @@ const Swipe = ({ promotionsData }) => {
           return (
             <SwiperSlide className="slider-container">
               <Slider
-                image={promotion.promotion_image}
-                title={promotion.promotion_name}
-                text={promotion.promotion_description}
+                image={promotion.coverPhoto.url}
+                title={promotion.title}
+                text={promotion.description}
               />
             </SwiperSlide>
           );
@@ -54,4 +58,3 @@ const Swipe = ({ promotionsData }) => {
   );
 };
 export default Swipe;
-//  Pexels images

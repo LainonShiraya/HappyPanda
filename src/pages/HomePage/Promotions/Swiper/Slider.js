@@ -4,13 +4,11 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "../../../../styles/components/Swipe.scss";
 const Slider = ({ image, title, text }) => {
-  const Image = require(`../../../../assets/food/${image}`);
-  console.log(Image);
   return (
     <div className="slider-slider-container">
-      <img src={Image} alt="testing" />
+      <img src={image} alt="Loading..." />
       <div className="slider-container__panel">
-        <h1>{title}</h1>
+        <h2>{title}</h2>
         <p>{text}</p>
         <button className="button-primary"> Check out! </button>
       </div>

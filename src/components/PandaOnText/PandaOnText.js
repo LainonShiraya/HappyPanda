@@ -6,7 +6,7 @@ const PandaOnText = ({ image, text, title }) => {
       <div className="panda-on-text-container">
         <img src={image} alt="Loading..." />
         <h1>{title}</h1>
-        <h2>{text}</h2>
+        <h3>{text}</h3>
       </div>
     </div>
   );

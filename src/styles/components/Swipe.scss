@@ -1,6 +1,8 @@
+@use "../util";
 .swiper {
   &-container {
-    width: 80%;
+   // width: 80%;
+   width: min(100% , 1400px);
   }
   &__button {
     top: 50%;
@@ -10,24 +12,30 @@
     text-align: center;
     cursor: pointer;
     background-color: inherit;
-    color: var(--font-color-light-700);
+    color: white;
     border-radius: 50%;
     border: none;
     font-size: 6rem;
     font-weight: 700;
     padding: 1rem;
     transition: all 0.2s ease-in-out;
-    &:hover {
-      color: var(--font-color-light-900);
-      font-size: 8rem;
+    &:hover,&:active,&:focus {
+      color: var(--font-color-light-700);
+      font-size: 7rem;
     }
     &-prev {
       @extend .swiper__button;
       left: 0;
+	  @include util.breakpoint-down('large'){
+		color:white;
+	  }
     }
     &-next {
       @extend .swiper__button;
       right: 0;
+	  @include util.breakpoint-down('large'){
+		color:white;
+	  }
     }
   }
 }
@@ -37,8 +45,15 @@
   overflow: hidden;
   text-align: center;
   cursor: grab;
-
-  &:hover {
+  @include util.breakpoint-down('large'){
+	img {
+		filter: brightness(40%);
+	  }
+	  .slider-container__panel {
+		visibility: visible;
+	  }
+  }
+  &:hover,&:active,&:focus {
     img {
       filter: brightness(40%);
     }
@@ -59,15 +74,17 @@
     visibility: hidden;
     z-index: 2;
     position: absolute;
-    top: 30%;
-    left: calc(50% - 12em);
+    top: min(20%, 40%);
+    left: calc(50% - 8rem);
     text-align: center;
-    width: 24em;
+   // width: 24em;
+    width: min(16rem, 80%);
     margin: auto;
-    h1 {
+    h2 {
       text-transform: uppercase;
       font-weight: 600;
       mix-blend-mode: difference;
+	  margin-bottom: 0.5rem;
     }
     p {
       font-weight: 400;
@@ -75,29 +92,3 @@
     }
   }
 }
-
-// .swiper-button-next,
-// .swiper-button-prev {
-//   color: black !important;
-//   transition-duration: 0.2s;
-//   padding: 1rem;
-//   font-size: 1.4rem;
-//   border-radius: 50%;
-//   &:hover {
-//     background-color: var(--font-color-light-700);
-//     transition: all 0.4s;
-//   }
-// }
-
-// .swiper-button-next::after,
-// .swiper-button-prev::after {
-//   // font-size: 2rem;
-//   // transition-duration: 0.2s;
-//   // font-weight: 700;
-//   display: none;
-// }
-// .swiper-button-next:hover::after,
-// .swiper-button-prev:hover::after {
-//   color: white !important;
-//   transition: all 0.4s;
-// }
