@@ -7,7 +7,7 @@ h3 {
 }
 h1{
 font-weight: 700;
-font-size: clamp(1.8rem, 1.5rem + 4vw , 4rem);
+font-size: clamp(1.6rem, 1.4rem + 4vw , 3rem);
 }
 h2{
 font-size: clamp(1.4rem, 1rem + 2vw , 2.2rem);
@@ -29,6 +29,7 @@ a {
 }
 .link {
   transition: all 0.2s ease-in-out;
+  margin:auto;
   &:hover,
   &:active,
   &:focus {

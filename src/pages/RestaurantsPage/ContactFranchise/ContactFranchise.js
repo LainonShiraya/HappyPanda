@@ -33,8 +33,6 @@ const ContactFranchise = ({
             setmakePandaHappyClicked(false);
             setSucessfulySent(true);
           }}
-          // to be added sucess alert
-          // onsubmit="notifySucessful();return false;"
         >
           <div className="contact-franchise-display-title">
             <h1>Make Panda Happy</h1>

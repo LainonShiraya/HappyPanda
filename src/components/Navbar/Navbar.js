@@ -13,15 +13,11 @@ const Navbar = () => {
           </Link>
         </p>
         <ul className="navbar-container__list">
-          <li className="link">Menu</li>
-          <li className="link">Promotions</li>
-          <li className="link">Favorites</li>
-          <li className="link">Login</li>
-          <li>
-            <a href="#cart">
+		<Link to="../menu" className="link">Menu </Link>
+		<Link to="../contact" className="link"> Contact</Link>
+		<Link to="../cart" className="link"> 
               <i class="fa-solid fa-basket-shopping"></i>
-            </a>
-          </li>
+			</Link>
         </ul>
       </div>
     </div>

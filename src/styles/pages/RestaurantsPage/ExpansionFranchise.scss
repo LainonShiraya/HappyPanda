@@ -1,3 +1,4 @@
+@use '../../util';
 .expansion-franchise {
   background-color: white;
   border-top: 0.5rem solid var(--font-color-light-900);
@@ -8,9 +9,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 8rem;
+    gap: 4rem;
+	@include util.breakpoint-down('small'){
+		width:100%;
+	};
     img {
-      width: 20%;
+		@include util.breakpoint-down('small'){
+			display:none;
+		};
+      width: 256px;
     }
     &-text {
       color: var(--font-color-dark-700);

@@ -10,7 +10,7 @@
     background-color: white;
     width: min(100% - 4rem , 800px);
     max-width: 42rem;
-    margin-top: 12rem;
+    margin-top: calc(6rem + 4vw);
     border-radius: 0.375rem;
     box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.1);
     display: flex;

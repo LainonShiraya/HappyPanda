@@ -1,12 +1,16 @@
+@use '../../util';
 .restaurants-container {
-  width: 40%;
+  width: min(100% - 1rem , 800px);
   margin: auto;
-  margin-top: 12rem;
+  margin-top: calc(6rem + 4vw);
   background-color: white;
   border-radius: 15px;
   padding-bottom: 2rem;
   .panda-on-text {
     padding-bottom: 0;
+	@media (max-width:360px){
+		padding-left:1rem;
+	};
     img {
       top: -100px;
     }
@@ -14,6 +18,9 @@
   &-text {
     text-align: center;
     padding: 0 4rem 2rem 4rem;
+	@include util.breakpoint-down('small'){
+		padding: 0 2rem 1rem 2rem;
+	}
     color: black;
     span {
       font-size: 1.2rem;

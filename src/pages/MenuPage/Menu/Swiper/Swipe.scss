@@ -1,0 +1,57 @@
+@use "../../../../styles/util";
+.swiper-big {
+	padding-top: calc(6rem - 4vw);
+  &-container {
+   width: 100%;
+  }
+  .buttons-container {
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+	width:100%;
+	margin:auto;
+  }
+  &__button {
+    z-index: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: inherit;
+    color: white;
+    font-size: 6rem;
+    font-weight: 700;
+	border:none;
+    transition: all 0.2s ease-in-out;
+    &:hover,&:active,&:focus {
+      color: var(--font-color-light-700);
+    }
+    &-prev {
+      @extend .swiper-big__button;
+      left: 0;
+	  @include util.breakpoint-down('large'){
+		color:white;
+	  }
+    }
+    &-next {
+      @extend .swiper-big__button;
+      right: 0;
+	  @include util.breakpoint-down('large'){
+		color:white;
+	  }
+    }
+  }
+}
+
+.slider-big-container {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  cursor: grab;
+  img {
+    height: 40vh;
+    min-height: 250px;
+    width: 100%;
+    object-fit: fill;
+    border-radius: 1rem;
+    transition: all 0.4s;
+  }
+}

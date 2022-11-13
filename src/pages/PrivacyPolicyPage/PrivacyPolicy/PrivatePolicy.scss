@@ -1,7 +1,8 @@
+@use '../../../styles/util';
 .private-policy-container {
-  width: 80%;
+  width: min(100% - 2rem, 1400px);
   margin: auto;
-  margin-top: 12rem;
+  margin-top: calc(6rem + 4vw);
   background-color: white;
   border-radius: 15px;
   .panda-on-text-container img {
@@ -11,6 +12,9 @@
     text-align: center;
     padding: 0 4rem 2rem 4rem;
     color: black;
+	@include util.breakpoint-down('small'){
+		padding: 0 2rem 1rem 2rem;
+	}
     span {
       font-size: 1.2rem;
       font-weight: 300;

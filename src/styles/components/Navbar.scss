@@ -1,3 +1,4 @@
+@use '../util';
 .navbar {
   position: sticky;
   top: 0;
@@ -6,9 +7,8 @@
   border-bottom: 1px solid var(--font-color-light-900);
   background-color: var(--background-color-dark);
   &-container {
-    width: 80%;
+    width: min(100%,1400px);
     margin: auto;
-    background-color: inherit;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -16,7 +16,7 @@
       position: relative;
       width: 8rem;
       height: 4rem;
-      overflow: hidden;
+	  overflow:hidden;
       margin-top: 0.125rem;
       margin-bottom: 0;
       img {
@@ -34,9 +34,11 @@
       text-align: center;
       gap: 2rem;
       margin: auto 2rem auto 1rem; // top right bottom left
-      li {
-        margin: auto;
-      }
+	  @include util.breakpoint-down('small'){
+		padding-left:0;
+		margin: auto 1rem auto 0;
+		gap:1rem;
+	  }
       i {
         font-size: 1.4rem;
       }
