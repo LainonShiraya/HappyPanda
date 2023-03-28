@@ -7,6 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import React from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import AdressPanel from "../../../../Shared/Components/AdressPanel/AdressPanel";
 
 const SideMenu = () => {
   return (
@@ -43,6 +44,9 @@ const SideMenu = () => {
               />
             </ListItemIcon>
           </ListItemButton>
+        </ListItem>
+        <ListItem key={"adress"}>
+          <AdressPanel darkMode />
         </ListItem>
       </List>
     </Box>

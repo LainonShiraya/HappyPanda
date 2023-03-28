@@ -21,8 +21,6 @@ async function getPromotionShowcases() {
   `;
   const { promotionShowcases }: { promotionShowcases: PromotionShowcaseDTO[] } =
     await graphcms.request(QUERY);
-  console.log("this is promotion showcases type");
-  console.log(promotionShowcases);
   return promotionShowcases;
 }
 
