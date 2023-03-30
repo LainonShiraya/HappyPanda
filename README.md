@@ -2,6 +2,7 @@
 
 Happy Panda is a mobile friendly web application that works as a delivery service for chain of Asian-type restaurant chain.
 It allows users to save home adress, select the nearest restaurant, order with delivery, use promo codes, and track the progress of food delivery.
+
 Track the progress on : https://happypanda.netlify.app/
 
  ## Tools used
