@@ -25,7 +25,7 @@ const PromotionsTab = () => {
       }}
     >
       {promotionCodes?.map((promotionCode: PromotionCodeDTO, key: number) => (
-        <Grid item xs={12} key={key} md={5}>
+        <Grid item xs={11} key={key} sm={5} md={4}>
           <ImgCard
             img={promotionCode.promotionShowcase.coverPhoto.url}
             title={promotionCode.promotionShowcase.title}

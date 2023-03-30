@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import SendIcon from "@mui/icons-material/Send";
+import Skeleton from "@mui/material/Skeleton";
 interface ImgCardProps {
   img: string;
   title: string;
@@ -24,31 +25,58 @@ export default function ImgCard({
 }: ImgCardProps) {
   return (
     <Card sx={{ width: "100%" }}>
-      <CardMedia
-        component="img"
-        alt="No image found"
-        height="250"
-        image={img}
-        sx={{ objectFit: "fill" }}
-      />
+      {!img ? (
+        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+      ) : (
+        <CardMedia
+          component="img"
+          alt="No image found"
+          image={img}
+          sx={{ objectFit: "fill", height: "200px" }}
+        />
+      )}
+
       <CardContent
         sx={{
           display: "flex",
-          gap: "1rem",
-          justifyContent: "space-between",
+          justifyContent: "space-evenly",
           flexDirection: "column",
+          gap: "1rem",
         }}
       >
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ minHeight: "100px" }}
-        >
-          {description}
-        </Typography>
+        {!title ? (
+          <Skeleton
+            animation="wave"
+            height={10}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+        ) : (
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            sx={{ height: "60px" }}
+          >
+            {title}
+          </Typography>
+        )}
+        {!description ? (
+          <Skeleton
+            animation="wave"
+            height={10}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+        ) : (
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ height: "100px" }}
+          >
+            {description}
+          </Typography>
+        )}
         {children}
       </CardContent>
       <CardActions>

@@ -8,8 +8,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import React from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import AdressPanel from "../../../../Shared/Components/AdressPanel/AdressPanel";
+import { useNavigate } from "react-router-dom";
 
 const SideMenu = () => {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -28,9 +31,13 @@ const SideMenu = () => {
         Menu
       </Typography>
       <List>
-        {["Menu", "Contact", "Promotions"].map((text, index) => (
+        {["Menu", "Contact"].map((text, index) => (
           <ListItem key={text}>
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                navigate(`../${text.toLowerCase()}`);
+              }}
+            >
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>

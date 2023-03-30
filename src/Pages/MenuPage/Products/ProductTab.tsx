@@ -12,17 +12,15 @@ const ProductTab = ({
   return (
     <Grid
       container
+      justifyContent="flex-start"
       rowSpacing={2}
       columnSpacing={2}
-      justifyContent="space-between"
-      id="promotions"
       sx={{
-        justifyContent: "flex-start",
         alignItems: "center",
       }}
     >
       {productList?.map((product: ProductDTO, key: number) => (
-        <Grid item xs={12} key={key} md={5}>
+        <Grid item xs={11} key={key} sm={5} md={4}>
           <ImgCard
             img={product.productImage.url}
             title={product.productName}

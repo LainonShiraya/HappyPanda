@@ -31,7 +31,7 @@ const Stepper = ({ promotions, fullWidth }: StepperPropsTypes) => {
               height: "40vh",
               minHeight: "300px",
               width: "100%",
-              borderRadius: "1rem",
+              borderRadius: "0.375rem",
             }}
             key={i}
           />

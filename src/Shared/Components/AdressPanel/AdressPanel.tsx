@@ -22,6 +22,7 @@ const AdressPanel = ({ darkMode }: AdressPanelProps) => {
           ? showAdress
             ? {
                 border: "none",
+                margin: "auto",
                 "& .MuiAlert-message": {
                   display: "flex",
                   flexDirection: "column",

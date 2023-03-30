@@ -9,10 +9,10 @@ interface ProductTemplateProps {
 const ProductTemplate = ({ title, children }: ProductTemplateProps) => {
   return (
     <Box id={title.toLowerCase()}>
-      <Typography variant="h4" component="h4">
+      <Typography variant="h4" component="h4" sx={{ marginTop: "2rem" }}>
         {title}
       </Typography>
-      <hr style={{ width: "40vw", marginLeft: "0" }} />
+      <hr style={{ width: "40vw", marginLeft: "0", marginBottom: "2rem" }} />
       {children}
     </Box>
   );
