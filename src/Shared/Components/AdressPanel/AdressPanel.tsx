@@ -9,10 +9,10 @@ interface AdressPanelProps {
 }
 const AdressPanel = ({ darkMode }: AdressPanelProps) => {
   const adressFromLocalStorage = JSON.parse(
-    localStorage.getItem("HappypandaAdress")!
+    localStorage.getItem("HappyPandaAdress")!
   );
   const [showAdress, setShowAdress] = useState<boolean>(false);
-  return adressFromLocalStorage ? (
+  return adressFromLocalStorage?.userAdress ? (
     <Alert
       severity="success"
       icon={false}
@@ -82,7 +82,7 @@ const AdressPanel = ({ darkMode }: AdressPanelProps) => {
         }
       >
         {showAdress
-          ? `${adressFromLocalStorage.city}  ${adressFromLocalStorage.street}  ${adressFromLocalStorage.number}`
+          ? `${adressFromLocalStorage.userAdress.city}  ${adressFromLocalStorage.userAdress.street}  ${adressFromLocalStorage.userAdress.number}`
           : "Your Adress is hidden"}
       </Typography>
     </Alert>

@@ -8,26 +8,26 @@ import AdressPanel from "../AdressPanel/AdressPanel";
 import RestaurantSelectionDialog from "../RestaurantSelectionDialog/RestaurantSelectionDialog";
 const VerifyAdressMenu = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [adress, setAdress] = useState<UserAdressDTO>({
+  const [address, setAddress] = useState<UserAdressDTO>({
     city: "",
     street: "",
     number: "",
   });
   const checkAdressIsNotEmpty = () => {
-    if (!adress?.city || !adress?.street || !adress?.number) return true;
+    if (!address?.city || !address?.street || !address?.number) return true;
     return false;
   };
   useEffect(() => {
     const pandaAdress = JSON.parse(localStorage.getItem("HappyPandaAdress")!);
-    if (!!pandaAdress?.userAdress) setAdress(pandaAdress.userAdress);
+    if (!!pandaAdress?.userAdress) setAddress(pandaAdress.userAdress);
   }, []);
   const inputAdress = (value: string, field: string) => {
-    setAdress({ ...adress, [field]: value });
+    setAddress({ ...address, [field]: value });
   };
   const saveAdressToLocalStorage = () => {
     localStorage.setItem(
       "HappyPandaAdress",
-      JSON.stringify({ userAdress: adress, restaurant: {} })
+      JSON.stringify({ userAdress: address, restaurant: {} })
     );
     setOpen(true);
   };

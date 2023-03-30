@@ -3,4 +3,5 @@ export interface PromotionShowcaseDTO {
   title: string;
   coverPhoto: { url: string };
   promotionCode: { promotionCode: string };
+  description: string;
 }

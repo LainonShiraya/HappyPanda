@@ -1,18 +1,9 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import React, { useState, useEffect } from "react";
-import Stepper from "../../../Shared/Components/Stepper/Stepper";
-import { PromotionShowcaseDTO } from "../../../Shared/DTOs/PromotionShowcaseDTO";
-import { getPromotionShowcases } from "../../../Utils/GraphQL/GraphQLPromotions";
+import React from "react";
+import PromotionStepper from "../../../Shared/Components/PromotionStepper/PromotionStepper";
 
 const PromotionsSection = () => {
-  const [promotions, setPromotions] = useState<PromotionShowcaseDTO[]>([]);
-  useEffect(() => {
-    getPromotionShowcases().then((result) => {
-      setPromotions(result);
-    });
-  }, []);
   return (
     <Box
       sx={{
@@ -46,25 +37,7 @@ const PromotionsSection = () => {
       >
         Most popular among the clients
       </Typography>
-      {promotions.length > 0 ? (
-        <Stepper promotions={promotions} />
-      ) : (
-        <Box sx={{ textAlign: "center" }}>
-          <Typography component="h5" variant="h5">
-            We do not have any sales currently.
-          </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              width: { sm: "50%", xs: "100%" },
-              marginTop: "1rem",
-            }}
-          >
-            Check Menu
-          </Button>
-        </Box>
-      )}
+      <PromotionStepper />
     </Box>
   );
 };

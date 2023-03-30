@@ -29,12 +29,11 @@ a {
 	&:focus {
 	  cursor: pointer;
 	  color: var(--font-color-light-500);
-	  transform: scale(1.2);
 	}
   }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--scroll-padding, 100px);
+  scroll-padding-top: var(--scroll-padding, 200px);
 }
 
 .button-primary {

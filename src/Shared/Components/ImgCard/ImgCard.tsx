@@ -12,6 +12,7 @@ interface ImgCardProps {
   description: string;
   buttonText: string;
   buttonOnClick?: any;
+  children?: any;
 }
 export default function ImgCard({
   img,
@@ -19,22 +20,36 @@ export default function ImgCard({
   description,
   buttonText,
   buttonOnClick,
+  children,
 }: ImgCardProps) {
   return (
     <Card sx={{ width: "100%" }}>
       <CardMedia
         component="img"
         alt="No image found"
-        height="180"
+        height="250"
         image={img}
+        sx={{ objectFit: "fill" }}
       />
-      <CardContent>
+      <CardContent
+        sx={{
+          display: "flex",
+          gap: "1rem",
+          justifyContent: "space-between",
+          flexDirection: "column",
+        }}
+      >
         <Typography gutterBottom variant="h5" component="div">
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ minHeight: "100px" }}
+        >
           {description}
         </Typography>
+        {children}
       </CardContent>
       <CardActions>
         <Button
