@@ -22,6 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/src/assets
+/src/assets/*/*.psd
+/src/assets/*.psd
+
 .env
 .env*
