@@ -1,18 +1,113 @@
-import React from "react";
-
+import Container from "@mui/material/Container";
+import React, { useEffect, useState } from "react";
+import pandaIcon from "../../../assets/food/panda-coin.png";
+import Accordion from "@mui/material/Accordion";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Typography from "@mui/material/Typography";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Divider from "@mui/material/Divider";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import "./Cart.scss";
+import { ProductCartDTO } from "../../../Shared/DTOs/ProductCartDTO";
+import ProductCartCard from "../../../Shared/Components/ProductCartCard/ProductCartCard";
+import { useAppSelector } from "../../../Utils/Redux/Hooks/Hooks";
+import TextField from "@mui/material/TextField";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import IconButton from "@mui/material/IconButton";
 const Cart = () => {
+  const productsInCart = useAppSelector((state) => state.shopCart);
+  const [cartPrice, setCartPrice] = useState<number>(0);
+  useEffect(() => {
+    let globalPrice = 0;
+    productsInCart.products.map(function (cartProduct) {
+      globalPrice += cartProduct.product.productPrice * cartProduct.quantity;
+      return globalPrice;
+    });
+    setCartPrice(globalPrice);
+  }, [productsInCart]);
   return (
-    <div
+    <Container
       style={{
-        height: "200px",
-        width: "200px",
         backgroundColor: "white",
-        margin: "auto",
-        position: "fixed",
+        borderTop: "4px solid var(--font-color-light-100)",
+        marginTop: "2rem",
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        flexDirection: "column",
+        paddingInline: "0",
+        gap: "0.5rem",
       }}
     >
-      <h4 style={{ color: "black", margin: "auto" }}> Cart template</h4>
-    </div>
+      <img
+        src={pandaIcon}
+        alt="panda-icon"
+        height="128px"
+        style={{
+          marginTop: "-4rem",
+          position: "absolute",
+          backgroundColor: "white",
+          borderRadius: "50%",
+          borderTop: "4px solid var(--font-color-light-100)",
+        }}
+      />
+      <Accordion sx={{ width: "100%", marginTop: "3rem !important" }}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography variant="subtitle1" className="Text-Cart__bold">
+            Cart
+          </Typography>
+        </AccordionSummary>
+        {productsInCart.products.length > 0 ? (
+          <AccordionDetails>
+            {productsInCart.products.map((cartProduct: ProductCartDTO) => (
+              <ProductCartCard
+                cartProduct={cartProduct}
+                key={cartProduct.product.id}
+              />
+            ))}
+          </AccordionDetails>
+        ) : (
+          <AccordionDetails>
+            <Typography>
+              Your cart is empty. Add one of the menu positions.
+            </Typography>
+          </AccordionDetails>
+        )}
+      </Accordion>
+      <Divider />
+      <TextField
+        label="Promotion Code"
+        size="small"
+        InputProps={{
+          endAdornment: (
+            <IconButton size="small">
+              <ArrowCircleRightIcon sx={{ color: "hsl(28, 100%, 50%)" }} />
+            </IconButton>
+          ),
+        }}
+        sx={{ width: "90%" }}
+      />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          margin: "auto",
+          width: "90%",
+        }}
+      >
+        <Typography className="Text-Cart__bold">Total:</Typography>
+        <Typography className="Text-Cart__bold">{cartPrice} $</Typography>
+      </Box>
+      <Button variant="contained" sx={{ marginBottom: "1rem" }}>
+        Order Now
+      </Button>
+    </Container>
   );
 };
 

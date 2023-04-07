@@ -17,6 +17,7 @@ const MenuSelectionBar = ({
         borderRadius: "0.375rem",
         backgroundColor: "white",
         display: { md: "flex", xs: "none" },
+        borderBottom: "2px solid var(--font-color-light-900)",
       }}
     >
       {productCategories?.map((category: ProductCategoryDTO, key: number) => (
@@ -37,8 +38,8 @@ const MenuSelectionBar = ({
             <img
               src={category.productCategoryIcon.url}
               alt="menu-button"
-              width="80px"
-              height="80px"
+              width="40px"
+              height="40px"
             />
             <Typography sx={{ color: "black" }} variant="h6" key={key}>
               {" "}

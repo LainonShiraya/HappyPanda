@@ -3,12 +3,29 @@ import Grid from "@mui/material/Grid";
 import ImgCard from "../../../Shared/Components/ImgCard/ImgCard";
 import { ProductDTO } from "../../../Shared/DTOs/ProductDTO";
 import Typography from "@mui/material/Typography";
-
+import { ProductCartDTO } from "../../../Shared/DTOs/ProductCartDTO";
+import { add, increaseQuantity } from "../../../Utils/Redux/Slices/ShopCart";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../Utils/Redux/Hooks/Hooks";
 const ProductTab = ({
   productList,
 }: {
   productList: ProductDTO[] | undefined;
 }) => {
+  const dispatch = useAppDispatch();
+  const productsInCart = useAppSelector((state) => state.shopCart);
+  function addProductToCart(product: ProductDTO) {
+    const productExists = productsInCart.products.find(
+      (cartProduct: ProductCartDTO) => cartProduct.product.id === product.id
+    );
+    if (!productExists) {
+      dispatch(add({ product: product, quantity: 1 }));
+    } else {
+      dispatch(increaseQuantity(product));
+    }
+  }
   return (
     <Grid
       container
@@ -26,6 +43,9 @@ const ProductTab = ({
             title={product.productName}
             description={product.productDescription}
             buttonText={"Add to cart"}
+            buttonOnClick={() => {
+              addProductToCart(product);
+            }}
           >
             <Typography
               variant="h4"
