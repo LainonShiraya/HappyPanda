@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, SetStateAction, Dispatch } from "react";
 import pandaIcon from "../../../assets/food/panda-coin.png";
 import Accordion from "@mui/material/Accordion";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -13,10 +13,15 @@ import "./Cart.scss";
 import { ProductCartDTO } from "../../../Shared/DTOs/ProductCartDTO";
 import ProductCartCard from "../../../Shared/Components/ProductCartCard/ProductCartCard";
 import { useAppSelector } from "../../../Utils/Redux/Hooks/Hooks";
-import TextField from "@mui/material/TextField";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import IconButton from "@mui/material/IconButton";
-const Cart = () => {
+import PromoCodeField from "./PromoCodeField";
+import { CategoryWithProductsDTO } from "../../../Shared/DTOs/CategoryWithProductsDTO";
+const Cart = ({
+  setCategoriesWithProducts,
+}: {
+  setCategoriesWithProducts: Dispatch<
+    SetStateAction<CategoryWithProductsDTO[] | undefined>
+  >;
+}) => {
   const productsInCart = useAppSelector((state) => state.shopCart);
   const [cartPrice, setCartPrice] = useState<number>(0);
   useEffect(() => {
@@ -81,18 +86,7 @@ const Cart = () => {
         )}
       </Accordion>
       <Divider />
-      <TextField
-        label="Promotion Code"
-        size="small"
-        InputProps={{
-          endAdornment: (
-            <IconButton size="small">
-              <ArrowCircleRightIcon sx={{ color: "hsl(28, 100%, 50%)" }} />
-            </IconButton>
-          ),
-        }}
-        sx={{ width: "90%" }}
-      />
+      <PromoCodeField setCategoriesWithProducts={setCategoriesWithProducts} />
       <Box
         sx={{
           display: "flex",

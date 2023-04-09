@@ -2,12 +2,12 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import { ProductCategoryDTO } from "../../Shared/DTOs/ProductCategoryDTO";
+import { ProductCategoriesDTO } from "../../Shared/DTOs/ProductCategoriesDTO";
 
 const MenuSelectionBar = ({
   productCategories,
 }: {
-  productCategories: ProductCategoryDTO[] | undefined;
+  productCategories: ProductCategoriesDTO[] | undefined;
 }) => {
   return (
     <Grid
@@ -20,7 +20,7 @@ const MenuSelectionBar = ({
         borderBottom: "2px solid var(--font-color-light-900)",
       }}
     >
-      {productCategories?.map((category: ProductCategoryDTO, key: number) => (
+      {productCategories?.map((category: ProductCategoriesDTO, key: number) => (
         <Grid item xs={2} key={key}>
           <Button
             sx={{ display: "flex", flexDirection: "column" }}

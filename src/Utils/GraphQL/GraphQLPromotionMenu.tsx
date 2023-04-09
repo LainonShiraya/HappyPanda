@@ -9,8 +9,7 @@ async function getPromotionCodes() {
     {
       promotionCodes {
         id
-        minimumOrderPrice
-        minimumProductCopies
+        maximumProductCopies
         priceReducedBy
         promotionCode
         promotionShowcase {

@@ -9,8 +9,8 @@ import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import { useAppDispatch } from "../../../Utils/Redux/Hooks/Hooks";
 import {
-  decreaseQuantity,
-  increaseQuantity,
+  decreaseProductsQuantity,
+  increaseProductsQuantity,
 } from "../../../Utils/Redux/Slices/ShopCart";
 const ProductCartCard = ({ cartProduct }: { cartProduct: ProductCartDTO }) => {
   const dispatch = useAppDispatch();
@@ -46,27 +46,42 @@ const ProductCartCard = ({ cartProduct }: { cartProduct: ProductCartDTO }) => {
               size="small"
               sx={{ padding: 0, minWidth: 0, borderRadius: "50%" }}
               onClick={() => {
-                dispatch(increaseQuantity(cartProduct.product));
+                dispatch(increaseProductsQuantity(cartProduct.product));
               }}
             >
               <AddCircleIcon />
             </Button>
             <Typography className="Text-Cart__bold" component="span">
-              {cartProduct.quantity}
+              {cartProduct.quantity}{" "}
+              {"promoProduct" in cartProduct.product
+                ? `(${cartProduct.product.maximumQuantity})`
+                : ""}
             </Typography>
             <Button
               size="small"
               sx={{ padding: 0, minWidth: 0, borderRadius: "50%" }}
               onClick={() => {
-                dispatch(decreaseQuantity(cartProduct.product));
+                dispatch(decreaseProductsQuantity(cartProduct.product));
               }}
             >
               <RemoveCircleIcon />
             </Button>
           </Box>
-          <Typography className="Text-Cart__bold" variant="h6">
-            {cartProduct.quantity * cartProduct.product.productPrice} $
-          </Typography>
+          <Box sx={{ textAlign: "right" }}>
+            {"promoProduct" in cartProduct.product ? (
+              <Typography variant="subtitle1">
+                <s>
+                  {cartProduct.quantity * cartProduct.product.productOldPrice}
+                </s>{" "}
+                $
+              </Typography>
+            ) : (
+              ""
+            )}
+            <Typography className="Text-Cart__bold" variant="h6">
+              {cartProduct.quantity * cartProduct.product.productPrice} $
+            </Typography>
+          </Box>
         </Box>
       </Box>
       <Divider />

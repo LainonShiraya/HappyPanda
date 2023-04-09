@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 import ImgCard from "../../../Shared/Components/ImgCard/ImgCard";
 import { PromotionCodeDTO } from "../../../Shared/DTOs/PromotionCodeDTO";
 import { getPromotionCodes } from "../../../Utils/GraphQL/GraphQLPromotionMenu";
+import { useDispatch } from "react-redux";
+import { usePromoCode } from "../../../Utils/Redux/Slices/ShopCart";
 
 const PromotionsTab = () => {
   const [promotionCodes, setPromotionCodes] = useState<PromotionCodeDTO[]>();
+  const dispatch = useDispatch();
   useEffect(() => {
     getPromotionCodes().then((response) => {
       setPromotionCodes(response);
@@ -31,6 +34,10 @@ const PromotionsTab = () => {
             title={promotionCode.promotionShowcase.title}
             description={promotionCode.promotionShowcase.description}
             buttonText={"Use code"}
+            buttonOnClick={() => {
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              dispatch(usePromoCode(promotionCode.promotionCode));
+            }}
           />
         </Grid>
       ))}

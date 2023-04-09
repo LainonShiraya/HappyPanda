@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ProductCartDTO } from "../../../Shared/DTOs/ProductCartDTO";
 import { ProductDTO } from "../../../Shared/DTOs/ProductDTO";
+import { PromoProductDTO } from "../../../Shared/DTOs/PromoProductDTO";
 
 export const ShopCart = createSlice({
   name: "ShopCart",
@@ -9,17 +10,27 @@ export const ShopCart = createSlice({
     coupon: string;
   },
   reducers: {
-    add: (state, action: PayloadAction<ProductCartDTO>) => {
+    addProducts: (state, action: PayloadAction<ProductCartDTO>) => {
       state.products.push(action.payload);
     },
-    increaseQuantity: (state, action: PayloadAction<ProductDTO>) => {
+    increaseProductsQuantity: (
+      state,
+      action: PayloadAction<ProductDTO | PromoProductDTO>
+    ) => {
       const index = state.products.findIndex(
         (cartProduct: ProductCartDTO) =>
           cartProduct.product.id === action.payload.id
       );
-      state.products[index].quantity += 1;
+      if ("promoProduct" in action.payload) {
+        console.log(action.payload);
+        state.products[index].quantity < action.payload.maximumQuantity
+          ? (state.products[index].quantity += 1)
+          : state.products[index].quantity = action.payload.maximumQuantity
+      } else {
+        state.products[index].quantity += 1;
+      }
     },
-    decreaseQuantity: (state, action: PayloadAction<ProductDTO>) => {
+    decreaseProductsQuantity: (state, action: PayloadAction<ProductDTO>) => {
       const index = state.products.findIndex(
         (cartProduct: ProductCartDTO) =>
           cartProduct.product.id === action.payload.id
@@ -33,8 +44,16 @@ export const ShopCart = createSlice({
         return state;
       }
     },
+    usePromoCode: (state, action: PayloadAction<string>) => {
+      state.coupon = action.payload;
+    },
   },
 });
 
-export const { add, increaseQuantity, decreaseQuantity } = ShopCart.actions;
+export const {
+  addProducts,
+  increaseProductsQuantity,
+  decreaseProductsQuantity,
+  usePromoCode,
+} = ShopCart.actions;
 export default ShopCart.reducer;

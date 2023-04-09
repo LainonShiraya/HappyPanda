@@ -7,19 +7,27 @@ import ProductTab from "./Products/ProductTab";
 import ProductTemplate from "./Products/ProductTemplate";
 import PromotionsTab from "./Products/PromotionsTab";
 import { getProductCategories } from "../../Utils/GraphQL/GraphQLProductCategory";
-import { ProductCategoryDTO } from "../../Shared/DTOs/ProductCategoryDTO";
+import { ProductCategoriesDTO } from "../../Shared/DTOs/ProductCategoriesDTO";
+import { CategoryWithProductsDTO } from "../../Shared/DTOs/CategoryWithProductsDTO";
+
 import LoadingPage from "../LoadingPage/LoadingPage";
 import Cart from "./Cart/Cart";
 import Grid from "@mui/material/Grid";
+import { getCategoriesWithProducts } from "../../Utils/GraphQL/GraphQLCategoryWithProducts";
 
 const MenuPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [productCategories, setProductsCategories] =
-    useState<ProductCategoryDTO[]>();
-
+    useState<ProductCategoriesDTO[]>();
+  const [categoriesWithProducts, setCategoriesWithProducts] =
+    useState<CategoryWithProductsDTO[]>();
   useEffect(() => {
     getProductCategories().then((response) => {
       setProductsCategories(response);
+      console.log(response);
+    });
+    getCategoriesWithProducts().then((response) => {
+      setCategoriesWithProducts(response);
       console.log(response);
     });
     setLoading(false);
@@ -70,8 +78,8 @@ const MenuPage = () => {
               <ProductTemplate title={"Promotions"}>
                 <PromotionsTab />
               </ProductTemplate>
-              {productCategories?.map(
-                (productCategory: ProductCategoryDTO, key) => (
+              {categoriesWithProducts?.map(
+                (productCategory: CategoryWithProductsDTO, key) => (
                   <ProductTemplate
                     title={productCategory.categoryName}
                     key={key}
@@ -85,7 +93,7 @@ const MenuPage = () => {
               )}
             </Grid>
             <Grid item lg={2}>
-              <Cart />
+              <Cart setCategoriesWithProducts={setCategoriesWithProducts} />
             </Grid>
           </Grid>
         </>
