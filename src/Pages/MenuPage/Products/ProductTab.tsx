@@ -34,16 +34,13 @@ const ProductTab = ({
   return (
     <Grid
       container
-      justifyContent="flex-start"
       rowSpacing={2}
       columnSpacing={2}
-      sx={{
-        alignItems: "center",
-      }}
+      sx={{ justifyContent: { xs: "center", md: "flex-start" } }}
     >
       {productList?.map(
         (product: ProductDTO | PromoProductDTO, key: number) => (
-          <Grid item xs={11} key={key} sm={5} md={4}>
+          <Grid item xs={11} key={key} sm={5} md={4} sx={{ display: "flex" }}>
             <ImgCard
               img={product.productImage.url}
               title={product.productName}

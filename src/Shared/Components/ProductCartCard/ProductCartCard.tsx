@@ -29,7 +29,7 @@ const ProductCartCard = ({ cartProduct }: { cartProduct: ProductCartDTO }) => {
         <img
           alt="obrazek"
           src={cartProduct.product.productImage.url}
-          width="100%"
+          width="250px"
         />
         <Typography className="Text-Cart__bold" sx={{ textAlign: "center" }}>
           {cartProduct.product.productName}

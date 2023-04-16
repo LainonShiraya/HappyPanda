@@ -44,6 +44,7 @@ const Cart = ({
         flexDirection: "column",
         paddingInline: "0",
         gap: "0.5rem",
+        borderRadius: "0.375rem",
       }}
     >
       <img

@@ -1,6 +1,5 @@
 import Container from "@mui/material/Container";
 import React, { useEffect, useState } from "react";
-import PromotionStepper from "../../Shared/Components/PromotionStepper/PromotionStepper";
 import PageTemplate from "../PageTemplate/PageTemplate";
 import MenuSelectionBar from "./MenuSelectionBar";
 import ProductTab from "./Products/ProductTab";
@@ -14,6 +13,8 @@ import LoadingPage from "../LoadingPage/LoadingPage";
 import Cart from "./Cart/Cart";
 import Grid from "@mui/material/Grid";
 import { getCategoriesWithProducts } from "../../Utils/GraphQL/GraphQLCategoryWithProducts";
+import { getPromotionCodes } from "../../Utils/GraphQL/GraphQLPromotionMenu";
+import { PromotionCodeDTO } from "../../Shared/DTOs/PromotionCodeDTO";
 
 const MenuPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -21,16 +22,19 @@ const MenuPage = () => {
     useState<ProductCategoriesDTO[]>();
   const [categoriesWithProducts, setCategoriesWithProducts] =
     useState<CategoryWithProductsDTO[]>();
+  const [promotionCodes, setPromotionCodes] = useState<PromotionCodeDTO[]>();
+
   useEffect(() => {
-    getProductCategories().then((response) => {
-      setProductsCategories(response);
-      console.log(response);
+    Promise.all([
+      getProductCategories(),
+      getCategoriesWithProducts(),
+      getPromotionCodes(),
+    ]).then((response) => {
+      setProductsCategories(response[0]);
+      setCategoriesWithProducts(response[1]);
+      setPromotionCodes(response[2]);
+      setLoading(false);
     });
-    getCategoriesWithProducts().then((response) => {
-      setCategoriesWithProducts(response);
-      console.log(response);
-    });
-    setLoading(false);
   }, []);
 
   return (
@@ -46,9 +50,7 @@ const MenuPage = () => {
               display: "flex",
               justifyContent: "center",
             }}
-          >
-            <PromotionStepper fullWidth />
-          </Container>
+          ></Container>
           <Container
             maxWidth="xl"
             sx={{
@@ -66,17 +68,20 @@ const MenuPage = () => {
           <Grid
             container
             maxWidth="xl"
-            spacing={1}
             sx={{
               marginBlock: { xs: "2rem", sm: "4rem" },
               display: "flex",
-              flexDirection: "row",
+              flexDirection: { lg: "row", xs: "column-reverse" },
               margin: "auto",
+              alignItems: { lg: "flex-start", xs: "center" },
+              justifyContent: "space-between",
             }}
           >
-            <Grid item sm={12} lg={10}>
+            <Grid item xs={12} lg={8}>
               <ProductTemplate title={"Promotions"}>
-                <PromotionsTab />
+                {promotionCodes && (
+                  <PromotionsTab promotionCodes={promotionCodes} />
+                )}
               </ProductTemplate>
               {categoriesWithProducts?.map(
                 (productCategory: CategoryWithProductsDTO, key) => (
@@ -92,7 +97,7 @@ const MenuPage = () => {
                 )
               )}
             </Grid>
-            <Grid item lg={2}>
+            <Grid item xs={11} lg={2}>
               <Cart setCategoriesWithProducts={setCategoriesWithProducts} />
             </Grid>
           </Grid>
