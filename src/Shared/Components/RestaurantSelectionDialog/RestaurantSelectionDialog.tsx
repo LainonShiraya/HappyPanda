@@ -42,11 +42,10 @@ const RestaurantSelectionDialog = ({ open, setOpen }: any) => {
         justifyContent="space-between"
         sx={{
           justifyContent: "center",
-          alignItems: "center",
         }}
       >
         {restaurants?.closestRestaurants?.map((closestRestaurant, key) => (
-          <Grid item xs={12} key={key} md={5}>
+          <Grid item xs={12} key={key} md={6}>
             <ImgCard
               key={closestRestaurant.id}
               img={closestRestaurant.restaurantImage.url}
@@ -63,7 +62,7 @@ const RestaurantSelectionDialog = ({ open, setOpen }: any) => {
           <Grid
             item
             xs={12}
-            md={5}
+            md={6}
             key={key}
             sx={{ justifyContent: "center", display: "flex" }}
           >

@@ -1,7 +1,6 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import React from "react";
-import Logo from "../../../assets/panda_iconv2.png";
 
 const PandaMenu = (props: any) => {
   return (
@@ -30,9 +29,13 @@ const PandaMenu = (props: any) => {
         }}
       >
         <img
-          src={Logo}
+          src={props.pandaImage}
           alt="logo"
-          style={{ position: "absolute", marginTop: "-6rem" }}
+          style={{
+            position: "absolute",
+            marginTop: "-6rem",
+            maxHeight: "160px",
+          }}
         />
       </Box>
 

@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import { UserAdressDTO } from "../../DTOs/UserAdressDTO";
 import AdressPanel from "../AdressPanel/AdressPanel";
 import RestaurantSelectionDialog from "../RestaurantSelectionDialog/RestaurantSelectionDialog";
+import pandaImage from "../../../assets/panda_iconv2.png";
 const VerifyAdressMenu = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [address, setAddress] = useState<UserAdressDTO>({
@@ -38,6 +39,7 @@ const VerifyAdressMenu = () => {
         width={"md"}
         title="Verify your adress"
         subtitle="and we will select restaurant for you"
+        pandaImage={pandaImage}
       >
         <Grid
           container

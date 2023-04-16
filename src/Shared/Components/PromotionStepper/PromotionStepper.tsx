@@ -8,8 +8,12 @@ import Stepper from "../../../Shared/Components/Stepper/Stepper";
 
 interface StepperPropsTypes {
   fullWidth?: boolean;
+  displayNoPromotions?: boolean;
 }
-const PromotionStepper = ({ fullWidth }: StepperPropsTypes) => {
+const PromotionStepper = ({
+  fullWidth,
+  displayNoPromotions,
+}: StepperPropsTypes) => {
   const [promotions, setPromotions] = useState<PromotionShowcaseDTO[]>([]);
   useEffect(() => {
     getPromotionShowcases().then((result) => {
@@ -18,8 +22,8 @@ const PromotionStepper = ({ fullWidth }: StepperPropsTypes) => {
   }, []);
   return promotions.length > 0 ? (
     <Stepper promotions={promotions} fullWidth={fullWidth} />
-  ) : (
-    <Box sx={{ textAlign: "center" }}>
+  ) : displayNoPromotions ? (
+    <Box sx={{ textAlign: "center", marginBlock: "4rem" }}>
       <Typography component="h5" variant="h5">
         We do not have any sales currently.
       </Typography>
@@ -34,7 +38,7 @@ const PromotionStepper = ({ fullWidth }: StepperPropsTypes) => {
         Check Menu
       </Button>
     </Box>
-  );
+  ) : null;
 };
 
 export default PromotionStepper;

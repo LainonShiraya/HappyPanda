@@ -23,29 +23,37 @@ export default function ImgCard({
   children,
 }: ImgCardProps) {
   return (
-    <Card sx={{ width: "100%" }}>
+    <Card
+      sx={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <CardMedia
         component="img"
         alt="No image found"
-        height="250"
         image={img}
-        sx={{ objectFit: "fill" }}
+        sx={{ objectFit: "fill", height: "200px" }}
       />
+
       <CardContent
         sx={{
           display: "flex",
-          gap: "1rem",
-          justifyContent: "space-between",
+          justifyContent: "space-evenly",
+          margin: "auto",
+          flexGrow: "1",
           flexDirection: "column",
         }}
       >
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           {title}
         </Typography>
+
         <Typography
           variant="body2"
           color="text.secondary"
-          sx={{ minHeight: "100px" }}
+          style={{ marginBottom: 6 }}
         >
           {description}
         </Typography>

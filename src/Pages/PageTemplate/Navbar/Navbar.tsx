@@ -9,9 +9,10 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import "./Navbar.scss";
 import NavbarMobile from "./NavbarMobile/NavbarMobile";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <>
       <NavbarMobile
@@ -34,7 +35,11 @@ const Navbar = () => {
             }}
           >
             <Box>
-              <Button>
+              <Button
+                onClick={() => {
+                  navigate("../");
+                }}
+              >
                 <img src={Logo} alt="logo" className="navbar-icon" />
               </Button>
             </Box>
@@ -51,16 +56,29 @@ const Navbar = () => {
               <MenuIcon fontSize="large" />
             </Button>
             <Box sx={{ display: { xs: "none", sm: "flex" }, gap: "1rem" }}>
-              <Button sx={{ color: "#fff", fontSize: "1.2rem" }} size="large">
+              <Button
+                sx={{ color: "#fff", fontSize: "1.2rem" }}
+                size="large"
+                onClick={() => {
+                  navigate("../menu");
+                }}
+              >
                 Menu
               </Button>
-              <Button sx={{ color: "#fff", fontSize: "1.2rem" }}>
+              <Button
+                sx={{ color: "#fff", fontSize: "1.2rem" }}
+                onClick={() => {
+                  navigate("../contact");
+                }}
+              >
                 Contact
               </Button>
-              <Button sx={{ color: "#fff", fontSize: "1.2rem" }}>
-                Promotions
-              </Button>
-              <Button sx={{ color: "#fff", fontSize: "1.2rem", gap: "0.5rem" }}>
+              <Button
+                sx={{ color: "#fff", fontSize: "1.2rem", gap: "0.5rem" }}
+                onClick={() => {
+                  navigate("../cart");
+                }}
+              >
                 Cart{" "}
                 <AddShoppingCartIcon
                   sx={{ color: "var(--font-color-light-500)" }}

@@ -37,7 +37,7 @@ const PromotionsSection = () => {
       >
         Most popular among the clients
       </Typography>
-      <PromotionStepper />
+      <PromotionStepper displayNoPromotions/>
     </Box>
   );
 };
