@@ -1,11 +1,16 @@
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import React from "react";
-import SideMenu from "../SideMenu";
+
 type MobileDrawerProps = {
   isDrawerOpen: boolean;
   setIsDrawerOpen: any;
+  children: React.ReactNode;
 };
-const NavbarMobile = ({ isDrawerOpen, setIsDrawerOpen }: MobileDrawerProps) => {
+const CustomDrawer = ({
+  isDrawerOpen,
+  setIsDrawerOpen,
+  children,
+}: MobileDrawerProps) => {
   return (
     <SwipeableDrawer
       anchor="left"
@@ -18,9 +23,9 @@ const NavbarMobile = ({ isDrawerOpen, setIsDrawerOpen }: MobileDrawerProps) => {
         },
       }}
     >
-      <SideMenu />
+      {children}
     </SwipeableDrawer>
   );
 };
 
-export default NavbarMobile;
+export default CustomDrawer;

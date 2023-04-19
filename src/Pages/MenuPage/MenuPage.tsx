@@ -15,6 +15,7 @@ import Grid from "@mui/material/Grid";
 import { getCategoriesWithProducts } from "../../Utils/GraphQL/GraphQLCategoryWithProducts";
 import { getPromotionCodes } from "../../Utils/GraphQL/GraphQLPromotionMenu";
 import { PromotionCodeDTO } from "../../Shared/DTOs/PromotionCodeDTO";
+import MobileCart from "./Cart/MobileCart/MobileCart";
 
 const MenuPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -77,7 +78,7 @@ const MenuPage = () => {
               justifyContent: "space-between",
             }}
           >
-            <Grid item xs={12} lg={8}>
+            <Grid item xs={12} lg={8} xl={9}>
               <ProductTemplate title={"Promotions"}>
                 {promotionCodes && (
                   <PromotionsTab promotionCodes={promotionCodes} />
@@ -97,9 +98,16 @@ const MenuPage = () => {
                 )
               )}
             </Grid>
-            <Grid item xs={11} lg={2}>
+            <Grid
+              item
+              xs={11}
+              lg={3}
+              xl={2}
+              sx={{ display: { xs: "none", lg: "flex" } }}
+            >
               <Cart setCategoriesWithProducts={setCategoriesWithProducts} />
             </Grid>
+            <MobileCart setCategoriesWithProducts={setCategoriesWithProducts} />
           </Grid>
         </>
       )}

@@ -6,7 +6,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../../Utils/Redux/Hooks/Hooks";
-import { usePromoCode } from "../../../Utils/Redux/Slices/ShopCart";
+import { usePromoCode, clearCart } from "../../../Utils/Redux/Slices/ShopCart";
 import { getPromotionCodeProducts } from "../../../Utils/GraphQL/GraphQLPromotionCodeProducts";
 import { CategoryWithProductsDTO } from "../../../Shared/DTOs/CategoryWithProductsDTO";
 import { getCategoriesWithProducts } from "../../../Utils/GraphQL/GraphQLCategoryWithProducts";
@@ -30,52 +30,51 @@ const PromoCodeField = ({
   });
   const dispatch = useAppDispatch();
   const submitPromoCode = async () => {
-    console.log(promoCode);
     const CouponResult = await getPromotionCodeProducts(promoCode);
     if (!CouponResult) {
       getCategoriesWithProducts().then((response) => {
         setCategoriesWithProducts(response);
-        console.log(response);
       });
       setCodeErrorState({
         codeUsed: true,
         type: "error",
         text: "Promo code does not exist !",
       });
-      return;
+    } else {
+      setCategoriesWithProducts([
+        {
+          id: CouponResult.id,
+          categoryName: CouponResult.productCategory.categoryName,
+          products: CouponResult.products.map((result) => {
+            return {
+              ...result,
+              productPrice:
+                result.productPrice -
+                Math.round(
+                  (CouponResult.priceReducedBy *
+                    0.01 *
+                    result.productPrice *
+                    100) /
+                    100
+                ),
+              productOldPrice: result.productPrice,
+              maximumQuantity: CouponResult.maximumProductCopies,
+              promoProduct: true,
+              productDescription:
+                result.productDescription +
+                "Maximum quantity of : " +
+                CouponResult.maximumProductCopies,
+            };
+          }),
+        },
+      ]);
+      setCodeErrorState({
+        codeUsed: true,
+        type: "success",
+        text: "Successfuly used promo code !",
+      });
     }
-    setCategoriesWithProducts([
-      {
-        id: CouponResult.id,
-        categoryName: CouponResult.productCategory.categoryName,
-        products: CouponResult.products.map((result) => {
-          return {
-            ...result,
-            productPrice:
-              result.productPrice -
-              Math.round(
-                (CouponResult.priceReducedBy *
-                  0.01 *
-                  result.productPrice *
-                  100) /
-                  100
-              ),
-            productOldPrice: result.productPrice,
-            maximumQuantity: CouponResult.maximumProductCopies,
-            promoProduct: true,
-            productDescription:
-              result.productDescription +
-              "Maximum quantity of : " +
-              CouponResult.maximumProductCopies,
-          };
-        }),
-      },
-    ]);
-    setCodeErrorState({
-      codeUsed: true,
-      type: "success",
-      text: "Successfuly used promo code !",
-    });
+    dispatch(clearCart());
   };
   return (
     <>
@@ -100,6 +99,7 @@ const PromoCodeField = ({
           ),
         }}
         sx={{ width: "90%" }}
+        color="secondary"
       />
       {codeErrorState.codeUsed && (
         <Alert

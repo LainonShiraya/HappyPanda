@@ -7,8 +7,9 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import React from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import AdressPanel from "../../../../Shared/Components/AdressPanel/AdressPanel";
+import AdressPanel from "../../../Shared/Components/AdressPanel/AdressPanel";
 import { useNavigate } from "react-router-dom";
+import CartBadge from "../../../Shared/Components/CartBadge/CartBadge";
 
 const SideMenu = () => {
   const navigate = useNavigate();
@@ -46,9 +47,11 @@ const SideMenu = () => {
           <ListItemButton>
             <ListItemText primary="Cart" />
             <ListItemIcon>
-              <AddShoppingCartIcon
-                sx={{ color: "var(--font-color-light-500)" }}
-              />
+              <CartBadge>
+                <AddShoppingCartIcon
+                  sx={{ color: "var(--font-color-light-500)" }}
+                />
+              </CartBadge>
             </ListItemIcon>
           </ListItemButton>
         </ListItem>

@@ -7,18 +7,26 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import "./Navbar.scss";
-import NavbarMobile from "./NavbarMobile/NavbarMobile";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
+import CartBadge from "../../../Shared/Components/CartBadge/CartBadge";
+import CustomDrawer from "../../../Shared/Components/CustomDrawer/CustomDrawer";
+import SideMenu from "./SideMenu";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
   return (
     <>
-      <NavbarMobile
+      <CustomDrawer
         isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
-      />
+      >
+        <SideMenu />
+      </CustomDrawer>
+      {/* <NavbarMobile
+        isDrawerOpen={isDrawerOpen}
+        setIsDrawerOpen={setIsDrawerOpen}
+      /> */}
       <AppBar
         position="sticky"
         sx={{
@@ -80,9 +88,11 @@ const Navbar = () => {
                 }}
               >
                 Cart{" "}
-                <AddShoppingCartIcon
-                  sx={{ color: "var(--font-color-light-500)" }}
-                />
+                <CartBadge>
+                  <AddShoppingCartIcon
+                    sx={{ color: "var(--font-color-light-500)" }}
+                  />
+                </CartBadge>
               </Button>
             </Box>
           </Toolbar>

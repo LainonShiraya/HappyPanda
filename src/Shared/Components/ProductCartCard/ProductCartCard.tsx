@@ -24,12 +24,13 @@ const ProductCartCard = ({ cartProduct }: { cartProduct: ProductCartDTO }) => {
           alignItems: "center",
           gap: "0.25rem",
           marginBlock: "1rem",
+          color: "inherit",
         }}
       >
         <img
           alt="obrazek"
           src={cartProduct.product.productImage.url}
-          width="250px"
+          width="100%"
         />
         <Typography className="Text-Cart__bold" sx={{ textAlign: "center" }}>
           {cartProduct.product.productName}
@@ -44,7 +45,12 @@ const ProductCartCard = ({ cartProduct }: { cartProduct: ProductCartDTO }) => {
           <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
             <Button
               size="small"
-              sx={{ padding: 0, minWidth: 0, borderRadius: "50%" }}
+              sx={{
+                padding: 0,
+                minWidth: 0,
+                borderRadius: "50%",
+                color: "inherit",
+              }}
               onClick={() => {
                 dispatch(increaseProductsQuantity(cartProduct.product));
               }}
@@ -59,7 +65,12 @@ const ProductCartCard = ({ cartProduct }: { cartProduct: ProductCartDTO }) => {
             </Typography>
             <Button
               size="small"
-              sx={{ padding: 0, minWidth: 0, borderRadius: "50%" }}
+              sx={{
+                padding: 0,
+                minWidth: 0,
+                borderRadius: "50%",
+                color: "inherit",
+              }}
               onClick={() => {
                 dispatch(decreaseProductsQuantity(cartProduct.product));
               }}

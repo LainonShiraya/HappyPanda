@@ -59,7 +59,12 @@ const Cart = ({
           borderTop: "4px solid var(--font-color-light-100)",
         }}
       />
-      <Accordion sx={{ width: "100%", marginTop: "3rem !important" }}>
+      <Accordion
+        sx={{
+          width: "100%",
+          marginTop: "3rem !important",
+        }}
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"

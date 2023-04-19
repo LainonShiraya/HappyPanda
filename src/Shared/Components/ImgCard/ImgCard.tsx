@@ -34,7 +34,7 @@ export default function ImgCard({
         component="img"
         alt="No image found"
         image={img}
-        sx={{ objectFit: "fill", height: "200px" }}
+        sx={{ objectFit: "fill", height: "200px"}}
       />
 
       <CardContent

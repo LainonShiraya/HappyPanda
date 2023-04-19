@@ -25,7 +25,7 @@ export const ShopCart = createSlice({
         console.log(action.payload);
         state.products[index].quantity < action.payload.maximumQuantity
           ? (state.products[index].quantity += 1)
-          : state.products[index].quantity = action.payload.maximumQuantity
+          : (state.products[index].quantity = action.payload.maximumQuantity);
       } else {
         state.products[index].quantity += 1;
       }
@@ -47,6 +47,9 @@ export const ShopCart = createSlice({
     usePromoCode: (state, action: PayloadAction<string>) => {
       state.coupon = action.payload;
     },
+    clearCart: (state) => {
+      state.products = [];
+    },
   },
 });
 
@@ -55,5 +58,6 @@ export const {
   increaseProductsQuantity,
   decreaseProductsQuantity,
   usePromoCode,
+  clearCart,
 } = ShopCart.actions;
 export default ShopCart.reducer;

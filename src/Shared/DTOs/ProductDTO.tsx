@@ -4,4 +4,5 @@ export interface ProductDTO {
   productPrice: number;
   productDescription: string;
   productImage: { url: string };
+  maximumQuantity?: number;
 }
